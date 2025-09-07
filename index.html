@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nnonvera&reg; – Technology | Marketplace | Consulting</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: grey;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
+      z-index: 1000;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+
+    nav img { max-height: 50px; }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    nav ul li a:hover { color: blue; transform: scale(1.1); }
+
+    header {
+      background: grey;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 { margin: 0.5rem 0; font-size: 2rem; }
+    header p { margin: 0; font-size: 1rem; }
+
+    section { padding: 3rem 1.5rem; max-width: 1100px; margin: auto; }
+
+    h2 { text-align: center; margin-bottom: 2rem; color: #004aad; }
+    .about-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,74,173,0.2);
+}
+
+.about-content {
+  flex: 1;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-image img {
+    max-width: 90%;
+  }
+}
+
+
+    /* Animation Classes */
+    .animate { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+    .animate.show { opacity: 1; transform: translateY(0); }
+
+    /* About Section */
+    .about-intro { background: white; color: black; padding: 2.0rem; border-radius: 10px; margin-bottom: 2.0rem; box-shadow: 0 8px 25px rgba(0,74,173,0.2); text-align: left; border-left: 4px solid #004aad; }
+    .about-mission { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 2rem; border-left: 4px solid #004aad; }
+    .about-strengths { background: #f8fafc; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; }
+    .strengths-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .strength-item { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s; }
+    .strength-item:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+    .strength-item .icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .strength-item h5 { color: #004aad; margin-bottom: 0.5rem; }
+    .strength-item p { color: #666; font-size: 0.9rem; }
+
+    /* Subsidiaries */
+    .about-subsidiaries { background: #f8fafc; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; }
+    .divisions { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+    .card { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); flex: 1 1 280px; max-width: 320px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+    .card h3 { margin-top: 0; color: #004aad; }
+
+    /* Services */
+    .services ul { list-style: none; padding: 0; max-width: 700px; margin: auto; }
+    .services li { background: white; margin: 0.5rem 0; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+
+    /* Partners */
+    .partners-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; align-items: center; }
+    .partners-logos img { max-height: 60px; max-width: 160px; object-fit: contain; filter: grayscale(20%); transition: transform 0.3s, filter 0.3s; }
+    .partners-logos img:hover { transform: scale(1.1); filter: grayscale(0%); }
+
+    /* Contact */
+    .contact form { display: flex; flex-direction: column; max-width: 500px; margin: auto; }
+    .contact input, .contact textarea { margin-bottom: 1rem; padding: 0.8rem; border: 1px solid #ddd; border-radius: 6px; }
+    .contact button { background: #004aad; color: white; border: none; padding: 0.8rem; border-radius: 6px; cursor: pointer; transition: background 0.3s, transform 0.3s; }
+    .contact button:hover { background: #0066cc; transform: scale(1.03); }
+
+    footer { text-align: center; background: #eee; padding: 1rem; font-size: 0.9rem; }
+
+    @media (max-width: 768px) {
+      .strengths-grid, .divisions { grid-template-columns: 1fr; flex-direction: column; }
+      nav ul { flex-direction: column; gap: 0.8rem; }
+      nav { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <img src="assests/nnonveralogo.png"  alt="Nnonvera Logo">
+    <ul>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#subsidiaries">Subsidiaries</a></li>
+      <li><a href="#partners">Partners</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Nnonvera®</h1>
+    <p>Parent company of Nnonvera Technologies, Nnonvera Marketplace & Nnonvera Consulting</p>
+  </header>
+
+
+ <!-- About Section -->
+<section class="about" id="about">
+  <div class="about-wrapper animate">
+    <h2>About Us</h2>
+    <div class="about-container">
+      <!-- Left Part: Image -->
+      <div class="about-image">
+        <img src="assests/nnonvera_team.png" alt="Nnonvera Team" />
+      </div>
+      <!-- Right Part: Text -->
+      <div class="about-content">
+        <div class="about-intro">
+          <h3>Innovation-Driven Solutions</h3>
+          <p>Nnonvera provides comprehensive solutions across technology development, digital marketplaces, and strategic consulting, delivering cutting-edge IT infrastructure, SaaS platforms, and expert advisory services.</p>
+        </div>
+        <div class="about-mission">
+          <h4>Our Mission</h4>
+          <p>Empowering businesses, healthcare providers, and educational institutions with modern digital tools for growth and innovation.</p>
+        </div>
+        <div class="about-strengths">
+          <h4>Our Core Strengths</h4>
+          <div class="strengths-grid">
+            <div class="strength-item"><span class="icon">⚡</span><h5>Lean Operations</h5><p>Optimizing operations efficiently.</p></div>
+            <div class="strength-item"><span class="icon">📊</span><h5>KPI Tracking</h5><p>Advanced analytics to drive results.</p></div>
+            <div class="strength-item"><span class="icon">🔧</span><h5>IT Integration</h5><p>Seamless fusion of operations and tech.</p></div>
+            <div class="strength-item"><span class="icon">📱</span><h5>Social Media Strategy</h5><p>Leveraging social platforms for revenue.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Subsidiaries -->
+  <!-- Subsidiaries -->
+<section class="about-subsidiaries" id="subsidiaries">
+  <h2 class="animate">Our Subsidiary Companies</h2>
+  <div class="divisions">
+    
+    <!-- Nnonvera Technologies -->
+    <div class="card animate">
+      <img src="assests/nnovera_technologies.png" alt="Nnonvera Technologies" style="width:100%; border-radius:8px; margin-bottom:1rem;">
+      <h3>Nnonvera Technologies</h3>
+      <p style="text-align: left;" >Custom websites, SaaS platforms, and enterprise IT systems for schools, hospitals, and businesses.</p>
+    </div>
+
+    <!-- Nnonvera Marketplace -->
+    <div class="card animate">
+      <img src="assests/nnonvera_marketplace.png" alt="Nnonvera Marketplace" style="width:100%; border-radius:8px; margin-bottom:1rem;">
+      <h3>Nnonvera Marketplace</h3>
+      <p style="text-align: left;" >Connecting buyers and sellers with a seamless digital marketplace experience.</p>
+    </div>
+
+    <!-- Nnonvera Consulting -->
+    <div class="card animate">
+      <img src="assests/nnonvera_consulting.png" alt="Nnonvera Consulting" style="width:100%; border-radius:8px; margin-bottom:1rem;">
+      <h3>Nnonvera Consulting</h3>
+      <p style="text-align: left;" >Advisory services in healthcare operations, IT strategy, and organizational improvement.</p>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <h2 class="animate">Our Services</h2>
+    <ul>
+      <li class="animate">🌐 Professional website design and development.</li>
+      <li class="animate">📊 SaaS solutions for schools – digital records, scheduling, and e-learning.</li>
+      <li class="animate">🛠️ Custom IT consulting for healthcare, finance, and education industries.</li>
+      <li class="animate">⚙️ Workflow automation, KPI tracking, and process improvement strategies.</li>
+    </ul>
+  </section>
+
+  <!-- Partners -->
+  <section class="partners" id="partners">
+    <h2 class="animate">Our Partners</h2>
+    <div class="partners-logos animate">
+      <a href="https://vfdtech.ng/" target="_blank"><img src="assests/partners/vtech.JPG" alt="VFD Tech"></a>
+      <a href="https://www.ksatria.io/" target="_blank"><img src="assests/partners/ksatria.JPG" alt="Ksatria"></a>
+      <a href="https://www.schoolphix.com/" target="_blank"><img src="assests/partners/schoolphix.JPG" alt="Schoolphix"></a>
+      <a href="https://vbank.ng/" target="_blank"><img src="assests/partners/vbank.JPG" alt="VBank"></a>
+    </div>
+  </section>
+
+
+  <!-- Testimonials Section -->
+<section class="testimonials" id="testimonials">
+  <h2 class="animate">What Our Clients Say</h2>
+  <div class="testimonial-container">
+
+    <!-- Testimonial 1 -->
+    <div class="testimonial-card animate">
+      <p class="quote" style="font-size: 1.05rem;
+  color: #444;
+  margin-bottom: 1rem;
+  line-height: 1.8;">Nnonvera Consulting transformed our facility’s operations with their IT solutions. Their managerial approach is top-notch.Nnovera Consults introduced and implemented the Electronic Medical System currently in use.</p>
+      <div class="author">
+        <img src="assests/parklane.webp" alt="Client 1"  width="200" height="240">
+        <div>
+          <h4>Dr. Nnamani Nnaji</h4>
+          <p style="color:#004aad; font-size: bold;">Medical Director, Parklane Psychiatric Hospital, Emene, Enugu State</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div class="testimonial-card animate">
+      <p class="quote" style="font-size: 1.05rem;
+  color: #444;
+  margin-bottom: 1rem;
+  line-height: 1.8;">The marketplace solution gave our business access to thousands of new customers. Kusnap is a free online marketplace.</p>
+      <div class="author">
+        <img src="assests/kusnap.jpg" alt="Client 2">
+        <div>
+          <h4>Idorenyin IWE</h4>
+          <p style="color:#004aad; font-size: bold;">CEO, Kusnap</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial 3 -->
+    <div class="testimonial-card animate">
+      <p class="quote" style="font-size: 1.05rem;
+  color: #444;
+  margin-bottom: 1rem;
+  line-height: 1.8;">The consulting team at Nnonvera provided strategies that helped us cut costs and scale operations seamlessly with their Educational Portal. We can send pupils results to Parents with a click of a button.”</p>
+      <div class="author">
+        <img src="assests/victa.jpg" alt="Client 3">
+        <div>
+          <h4>Chioma Okeke</h4>
+          <p style="color:#004aad; font-size: bold;">Founder, Victa Academy, Badore, Ajah, Lagos</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2 class="animate">Contact Us</h2>
+    <form name="contact" method="POST" data-netlify="true" class="animate">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p style="text-align:center; margin-top:1rem;" class="animate">
+      📧 <a href="mailto:nnonyeluhenry@gmail.com">support@nnonvera.com</a> | 📱 +234 803 957 2630
+    </p>
+  </section>
+
+  <footer>
+    © 2025 Nnonvera. All Rights Reserved.
+  </footer>
+
+  <!-- Scroll-trigger JS -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
